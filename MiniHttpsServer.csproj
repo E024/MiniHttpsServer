@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{758DFFE9-148B-44AB-8789-8B0B0AB0F619}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MiniHttpsServer</RootNamespace>
+    <AssemblyName>MiniHttpsServer</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net20\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseHeader.cs" />
+    <Compile Include="HeadersHelper.cs" />
+    <Compile Include="HttpRequest.cs" />
+    <Compile Include="HttpResponse.cs" />
+    <Compile Include="Linq\Internal\Definitions\Exceptions.cs" />
+    <Compile Include="Linq\Internal\Definitions\Parameters.cs" />
+    <Compile Include="Linq\Internal\Infrastructure\Buffer\Buffer.cs" />
+    <Compile Include="Linq\Internal\Infrastructure\EmptyEnumerable\EmptyEnumerable.cs" />
+    <Compile Include="Linq\Internal\Infrastructure\Grouping\Grouping.cs" />
+    <Compile Include="Linq\Internal\Infrastructure\NullableKeyDictionary\NullableKeyDictionary.cs" />
+    <Compile Include="Linq\Internal\Infrastructure\OrderedEnumerable\CompositeKey.cs" />
+    <Compile Include="Linq\Internal\Infrastructure\OrderedEnumerable\DescendingComparer.cs" />
+    <Compile Include="Linq\Internal\Infrastructure\OrderedEnumerable\OrderedEnumerable.cs" />
+    <Compile Include="Linq\Internal\Infrastructure\OrderedEnumerable\QuickSorter\KeyIndex.cs" />
+    <Compile Include="Linq\Internal\Infrastructure\OrderedEnumerable\QuickSorter\QuickSorter.cs" />
+    <Compile Include="Linq\Internal\Infrastructure\OrderedEnumerable\QuickSorter\StableQuickSorter.cs" />
+    <Compile Include="Linq\Internal\Infrastructure\UniqueCollection\UniqueCollection.cs" />
+    <Compile Include="Linq\System\CompilerServices\ExtensionAttribute.cs" />
+    <Compile Include="Linq\System\Delegates\Delegates.cs" />
+    <Compile Include="Linq\System\Linq\DataStructures\Interface\IGrouping.cs" />
+    <Compile Include="Linq\System\Linq\DataStructures\Interface\ILookup.cs" />
+    <Compile Include="Linq\System\Linq\DataStructures\Interface\IOrderedEnumerable.cs" />
+    <Compile Include="Linq\System\Linq\DataStructures\Lookup.cs" />
+    <Compile Include="Linq\System\Linq\DeferredExecution.cs" />
+    <Compile Include="Linq\System\Linq\ImmediateExecution.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestHeaders.cs" />
+    <Compile Include="ResponseHeaders.cs" />
+    <Compile Include="TlsAuthentication.cs" />
+    <Compile Include="TlsClient.cs" />
+    <Compile Include="TlsServer.cs" />
+    <Compile Include="TCPClient.cs" />
+    <Compile Include="TCPConnection.cs" />
+    <Compile Include="TCPServer.cs" />
+    <Compile Include="TlsUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
