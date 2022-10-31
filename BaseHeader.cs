@@ -33,7 +33,7 @@ namespace MiniHttpsServer
             if (fieldName == null) return null;
             var hasKey = Headers.ContainsKey(fieldName);
             if (!hasKey) return null;
-            return Headers[fieldName];
+            return Headers[fieldName].Trim();
         }
 
         protected string GetHeaderByKey(string fieldName)

@@ -184,7 +184,7 @@ namespace MiniHttpsServer
             HandAllowOrigin(request, response);
             if (request.URL.StartsWith("/xxx", StringComparison.CurrentCultureIgnoreCase))
             {
-               
+
             }
             response.SetContent("<html><body><h1>404 - Not Found</h1></body></html>");
             response.StatusCode = "404";
@@ -195,30 +195,25 @@ namespace MiniHttpsServer
         }
         protected virtual void Run()
         {
-            while (true)
+            try
             {
-                try
+                HttpRequest request = new HttpRequest(inputStream.BaseStream);
+                //request.Logger = Logger;
+
+                //构造HTTP响应
+                HttpResponse response = new HttpResponse(outputStream.BaseStream);
+                //response.Logger = Logger;
+                switch (request.Method)
                 {
-
-                    HttpRequest request = new HttpRequest(inputStream.BaseStream);
-                    //request.Logger = Logger;
-
-                    //构造HTTP响应
-                    HttpResponse response = new HttpResponse(outputStream.BaseStream);
-                    //response.Logger = Logger;
-                    switch (request.Method)
-                    {
-                        case "GET":
-                            OnGet(request, response);
-                            break;
-                    }
-
+                    case "GET":
+                        OnGet(request, response);
+                        break;
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(MethodBase.GetCurrentMethod() + "接口传入的数据读取错误,可能是加密协议不符! 日志中见到这个错误请无视即可" + ex);
-                    break;
-                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(MethodBase.GetCurrentMethod() + "接口传入的数据读取错误,可能是加密协议不符! 日志中见到这个错误请无视即可" + ex);
             }
             Close();
         }
